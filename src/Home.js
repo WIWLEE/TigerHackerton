@@ -1,5 +1,8 @@
 
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+import RegisterQR from './RegisterQR.js';
+import ViewFoodList from './ViewFoodList.js';
 import './Home.css';
 import Todolist from './Todolist.js';
 
@@ -75,9 +78,8 @@ const Home = () => {
             <div class = "div2">
                 <h2>Food Hygiene<br /> Management Service</h2>
                 <h3>for Store Managers</h3>
-                <a href="#" class="button">PRODUCTS REGISTRATION</a><br /> 
-                <a href="#" class="button">REGISTRATION INQUIRY</a><br />
-                <button onClick={scrollCallBack}>Click Me!</button>
+                <Link to="ViewFoodList" class="button">REGISTRATION INQUIRY</Link><br />
+                <Link to="RegisterQR" class="button">PRODUCT REGISTRATION</Link><br />
             </div>
             <div>
                 <img src="main.jpeg" alt="Food Hygiene Background"/>

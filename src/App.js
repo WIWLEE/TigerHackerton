@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 import './App.css';
 import Home from './Home.js';
-import Todolist from './Todolist.js';
 import RegisterQR from './RegisterQR.js';
 import ViewFoodList from './ViewFoodList.js';
 import CameraPage from './CameraPage.js';
@@ -62,9 +61,6 @@ export default class App extends Component {
       <Router>
 
       <div>
-        <nav>
-          <Link to="ViewFoodList">ViewFoodList</Link> | <Link to="RegisterQR">RegisterQR</Link>
-        </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ViewFoodList"  element={<ViewFoodList />} />
