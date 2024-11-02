@@ -5,6 +5,9 @@ import Home from './Home.js';
 import RegisterQR from './RegisterQR.js';
 import ViewFoodList from './ViewFoodList.js';
 import CameraPage from './CameraPage.js';
+import QRcodeGenerator from './QRCodeGenerator.js';
+import QRImageSubmit from './QRImageSubmit.js';
+
 
 export default class App extends Component {
   state = {
@@ -64,7 +67,9 @@ export default class App extends Component {
         <Route path="/" element={<Home />} />
         <Route path="/ViewFoodList"  element={<ViewFoodList />} />
         <Route path="/RegisterQR" element={<RegisterQR />} />
+        <Route path="/QRImageSubmit" element={<QRImageSubmit />} />
         <Route path="/Camera" element={<CameraPage />} />
+        <Route path="/QRCodeGenerator" element={<QRcodeGenerator />} />
       </Routes>
       </div>
     </Router>

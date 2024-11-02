@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 
 export default class RegisterQR extends Component {
 
+    /*
     submitQRInfo = () => {
         const requestData = {
             name: 'Cucumber',
@@ -37,7 +38,8 @@ export default class RegisterQR extends Component {
         .catch(error => {
             console.error('Error:', error); // Log the error
         });
-    };
+    };*/
+    
 
     render() {
         return (
@@ -46,6 +48,12 @@ export default class RegisterQR extends Component {
             <button onClick={this.submitQRInfo}>Submit QR Info</button>
             <Link to="/camera">
                 <button>Go to Camera</button>
+            </Link>
+            <Link to="/QRCodeGenerator">
+                <button>Go to QR Generate</button>
+            </Link>
+            <Link to="/QRImageSubmit">
+                <button>QR Image</button>
             </Link>
           </div>
         );

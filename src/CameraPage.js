@@ -33,7 +33,7 @@ class CameraPage extends Component{
           .catch((error) => {
             console.error("Error accessing media devices:", error);
         this.setState({ loadingMessage: "Error accessing camera. Please check your permissions." });
-          });0
+          });
       }
 
     tick(canvas, video) {
