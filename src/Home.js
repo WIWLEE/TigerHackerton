@@ -85,7 +85,6 @@ const Home = () => {
         </div>
         <div id = 'scrollTarget'>
             <Todolist />
-          <button onClick={submitQRInfo}>Submit QR Info</button>
         </div>
 
     </div>

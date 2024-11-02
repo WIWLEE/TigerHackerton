@@ -55,6 +55,7 @@ app.post("/info",(req,res)=>{
         }
         res.status(201).json({ message: 'Material added successfully', materialId: results.insertId });
     });
+})
 
 
 app.get("/todolists", (req, res) => {
