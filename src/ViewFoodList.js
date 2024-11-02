@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ViewFoodList = () => {
+const Home = () => {
   return (
     <div>
-      <h1>View Page</h1>
+      <h1>Home Page</h1>
       <p>Welcome to the Home page!</p>
     </div>
   );
 };
 
-export default ViewFoodList; // 반드시 default export를 사용하세요.
+export default Home; // 반드시 default export를 사용하세요.
