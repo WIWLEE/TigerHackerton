@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './Home.css';
 import Todolist from './Todolist.js';
@@ -84,9 +85,13 @@ const Home = () => {
         </div>
         <div id = 'scrollTarget'>
             <Todolist />
+          <button onClick={submitQRInfo}>Submit QR Info</button>
         </div>
+
     </div>
   );
 };
 
-export default Home;
+
+
+export default Home; // 반드시 default export를 사용하세요.
