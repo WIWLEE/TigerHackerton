@@ -56,7 +56,22 @@ app.post("/info",(req,res)=>{
         res.status(201).json({ message: 'Material added successfully', materialId: results.insertId });
     });
 
+
+app.get("/todolists", (req, res) => {
+    const sql = "SELECT * FROM ToDoList"; // 모든 Material 데이터를 선택하는 쿼리
+
+    connection.query(sql, (error, results) => {
+        if (error) {
+            console.log("데이터 조회 실패");
+            console.log(error);
+            return res.status(500).send("데이터 조회 실패");
+        } else {
+           console.log("데이터 조회 성공", results);
+            return res.json(results); // 조회된 데이터를 클라이언트에 JSON 형식으로 반환
+        }
+    });
 });
+
 
 app.post("/callbody", (req,res)=>{
     connection.query("SELECT * FROM test",

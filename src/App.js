@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 import './App.css';
 import Home from './Home.js';
+import Todolist from './Todolist.js';
 import RegisterQR from './RegisterQR.js';
 import ViewFoodList from './ViewFoodList.js';
 import CameraPage from './CameraPage.js';
@@ -59,6 +60,7 @@ export default class App extends Component {
   render() {
     return (
       <Router>
+
       <div>
         <nav>
           <Link to="ViewFoodList">ViewFoodList</Link> | <Link to="RegisterQR">RegisterQR</Link>
@@ -83,6 +85,7 @@ export default class App extends Component {
       //   <h3>{this.state.data}</h3>
       //   <button onClick={this.onCall}>가져오기</button>
       // </div>
+
     )
   }
 }
