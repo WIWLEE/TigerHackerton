@@ -11,17 +11,10 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <div className="main">
-          <nav>
-            <Link to="/ViewFoodList">ViewFoodList</Link> | <Link to="/RegisterQR">RegisterQR</Link>
-          </nav>
+        <div>
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
-          <Routes>
-            <Route path="/" element={<Todolist />} /> {/* 오타 제거 */}
-          </Routes>
-
         </div>
       </Router>
     )

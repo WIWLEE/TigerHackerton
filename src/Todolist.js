@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './Todolist.css';
 
 const Todolist = () => {
-  const [data, setData] = useState("");
-  const [is_checked, setIsChecked] = useState();
-  const [description, setDescription] = useState("")
-  const [due_date, setDueDate] = useState("")
+  const [list, setLists] = useState([]); //list 상태 변수 정의
+  const [loading, setLoading] = useState(true); 
 
   const postTodolist = () => {
-    
     const post = {
-      is_checked : data,
-      description : description,
-      due_date  : due_date,
+      is_checked: 0,
+      description: "test",
+      due_date: "2024-08-18",
     };
 
     fetch("http://localhost:3001/register/todolist", {
@@ -30,7 +28,6 @@ const Todolist = () => {
       });
   };
 
-
   const getTodolists = () => {
     fetch("http://localhost:3001/todolists", {
       method: "get",
@@ -40,12 +37,11 @@ const Todolist = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log("응답 데이터:", json); // 전체 응답 데이터 출력
+        console.log("응답 데이터:", json);
         if (json && json.length > 0) {
-          // 데이터가 있을 경우 첫 번째 항목의 description으로 설정
-          setDescription(json[0].description || "No description available");
+          setLists(json); 
         } else {
-          setDescription("데이터가 비어 있습니다.");
+          setLists([{ description: "데이터가 비어 있습니다." }]);
         }
       })
       .catch((error) => {
@@ -53,22 +49,38 @@ const Todolist = () => {
       });
   };
 
+ //화면이 렌더링될때 실행
+  useEffect(() => {
+    getTodolists();
+  }, []);
 
   return (
     <div>
-      <h1>Todolist Page</h1>
+      {/* <h1>Todolist Page</h1>
       <p>Welcome to the Todolist page!</p>
       <button onClick={postTodolist}>Submit</button>
-      <br /><br /><br /><br /><br />
       <h2>데이터 가져오기</h2>
-      <h3>{description}</h3>
-      <button onClick={getTodolists}>가져오기</button>
-
-      <ol>
-        <li>
-          {/* 항목 추가 가능 */}
-        </li>
-      </ol>
+      <button onClick={getTodolists}>가져오기</button> */}
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <div id="grid-container">
+        <div id="img">
+          <img src="todo.jpeg" alt="Food Hygiene Background" />
+        </div>
+        <div id="content1">
+          <h2>To Do List</h2>
+          <h3>11/11/2024 10:38</h3>
+          <h4>If you are an admin today <br />please read the below carefully and check your status</h4>
+        </div>
+        <div id="content2">
+        <ul>
+            {list.map(item => (
+              <li key={item.id}>
+              {item.description} ~ {new Date(item.due_date).toLocaleDateString()}
+            </li>
+            ))}
+        </ul>   
+        </div>
+      </div>
     </div>
   );
 };

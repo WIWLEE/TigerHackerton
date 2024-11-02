@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import './Home.css';
+import Todolist from './Todolist.js';
+
+
+const scrollCallBack = () =>{
+    document.getElementById('scrollTarget').scrollIntoView()
+  }
 
 const Home = () => {
     const [testbody, setTestbody] = useState("");
@@ -61,17 +68,23 @@ const Home = () => {
   
   return (
     <div class = "container">
+        <div id="header">
+        </div>
         <div id="grid-container">
             <div class = "div2">
                 <h2>Food Hygiene<br /> Management Service</h2>
                 <h3>for Store Managers</h3>
+                <a href="#" class="button">PRODUCTS REGISTRATION</a><br /> 
+                <a href="#" class="button">REGISTRATION INQUIRY</a><br />
+                <button onClick={scrollCallBack}>Click Me!</button>
             </div>
             <div>
                 <img src="main.jpeg" alt="Food Hygiene Background"/>
             </div>
         </div>
-        <a href="#" class="button">PRODUCTS REGISTRATION</a> 
-        <a href="#" class="button">REGISTRATION INQUIRY</a>
+        <div id = 'scrollTarget'>
+            <Todolist />
+        </div>
     </div>
   );
 };
