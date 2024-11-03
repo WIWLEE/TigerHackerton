@@ -1,5 +1,6 @@
 import React, {useEffect,useRef,useState,Component} from 'react';
 import jsQR from 'jsqr';
+import './CameraPage.css'
 
 class CameraPage extends Component{
     constructor(props)
@@ -72,15 +73,12 @@ class CameraPage extends Component{
 
     render()
     {
-        return(<div style={{ fontFamily: "'Ropa Sans', sans-serif", color: "#333", maxWidth: "640px", margin: "0 auto", position: "relative" }}>
-            <h1>jsQR Demo</h1>
-            <a href="https://github.com/cozmo/jsQR" style={{ position: "absolute", right: 0, top: "12px", color: "#2D99FF" }}>
-              View documentation on Github
-            </a>
-            <p>Pure JavaScript QR code decoding library.</p>
-            <div style={{ textAlign: "center", padding: "40px", backgroundColor: "#eee" }}>{this.state.loadingMessage}</div>
-            <canvas id="canvas" ref={this.canvasRef} style={{ width: "100%" }} hidden></canvas>
-            <div style={{ marginTop: "20px", background: "#eee", padding: "10px", paddingBottom: "0" }}>
+        return(
+        <div id="camera-page-container">
+            <div id="title">Product Registration</div>
+            <div className="loading-message">{this.state.loadingMessage}</div>
+            <canvas id="video" ref={this.canvasRef} hidden></canvas>
+            <div>
               <div>{this.state.outputData || "No QR code detected."}</div>
             </div>
             <video ref={this.videoRef} style={{ display: "none" }}></video>
