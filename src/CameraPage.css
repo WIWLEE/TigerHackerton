@@ -10,6 +10,10 @@
     overflow: hidden;
 }
 
+#commit{
+    color:white;
+}
+
 #title {
     font-size: 70pt;
     text-align: center;

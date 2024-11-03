@@ -210,6 +210,8 @@ class CameraPage extends Component {
       >
         <input type = "file" onChange = {this.handleFileChange} accept = "image/*" disabled={activeContainer !== 'file'} />
         </div>
+        <video ref = {this.videoRef} style = {{  display: "none"}} > </video>
+
       </div>
       {
           this.state.outputData && ( 
@@ -218,7 +220,6 @@ class CameraPage extends Component {
             </button>
           )
       } 
-      <video ref = {this.videoRef} style = {{  display: "none"}} > </video>
       </div>);
     }
   }
