@@ -95,32 +95,35 @@ const Todolist = () => {
         </div>
         <div id="content2">
         <ul>
-  {list.slice(0, 10).map(item => (
-    <li key={item.ID} style={{ display: "flex", alignItems: "center" }}> {/* 리스트 항목을 flex로 정렬 */}
-      <button
-        onClick={() => {
-          console.log("Clicked on check");
-          toggleCheck(item.ID, item.is_checked);
-        }}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          color: item.is_checked === 1 ? "green" : "gray", // 체크 시 색상 변경
-          fontSize: "1rem",
-          fontWeight: "bold",
-          display: "flex",
-          alignItems: "center", // 버튼 내용 중앙 정렬
-          marginRight: "8px" // 버튼과 텍스트 사이 간격 추가
-        }}
-        aria-label="Toggle Check"
-      >
-        <span>{item.is_checked === 1 ? "✓" : "○"}</span> {/* 상태에 따른 표시 */}
-      </button>
-      {item.description} ~ <span id="color">{new Date(item.due_date).toLocaleDateString()}</span>
-    </li>
-  ))}
-</ul>
+          {list
+            .filter(item => item.description !== null) //null이 아닌 항목만 필터링
+            .sort((a, b) => new Date(a.due_date) - new Date(b.due_date)) // due_date 기준 오름차순 정렬
+            .slice(0, 10) // 상위 10개 선택
+            .map(item => (
+              <li key={item.ID}>
+                <button
+                  onClick={() => {
+                    console.log("Clicked on check");
+                    toggleCheck(item.ID, item.is_checked);
+                  }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: item.is_checked === 1 ? "red" : "gray", // 체크 시 색상 변경
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                    padding: 0,
+                    margin: 0,
+                  }}
+                  aria-label="Toggle Check"
+                >
+                  <span>{item.is_checked === 1 ? "✓" : "○"}</span> {/* 상태에 따른 표시 */}
+                </button>
+                {" " + item.description} ~ <span id="color">{new Date(item.due_date).toLocaleDateString()}</span>
+              </li>
+            ))}
+        </ul>
 
         </div>
       </div>
