@@ -83,16 +83,14 @@ const Home = () => {
                   <Link to="ViewFoodList" class="button">REGISTRATION INQUIRY</Link><br />
                   <Link to="RegisterQR" class="button">PRODUCT REGISTRATION</Link><br />
                 </container>
-                
             </div>
             <div>
                 <img class="img1" src="main.jpeg" alt="Food Hygiene Background"/>
             </div>
         </div>
-        <div id = 'scrollTarget'>
+        <div>
             <Todolist />
         </div>
-
     </div>
   );
 };
