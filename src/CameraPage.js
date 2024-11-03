@@ -5,7 +5,9 @@ import React, {
   Component
 } from 'react';
 import jsQR from 'jsqr';
-import './CameraPage.css'
+import './CameraPage.css';
+import { withRouter } from 'react-router-dom';
+
 
 class CameraPage extends Component {
   constructor(props) {
@@ -141,6 +143,7 @@ class CameraPage extends Component {
 
   handleConfirm = async() => {
     const ImgData = this.state.outputData;
+    try{
     for(let index=0;index<ImgData.length;index++)
       {
           const ingredient = ImgData[index];
@@ -174,8 +177,15 @@ class CameraPage extends Component {
               console.error('Error:', error); // Log the error
           });
       }
+    } catch(error) {
+      console.error('Error: ',error);
+      alert("Error");
+      window.location.reload();
+    }
 
-      console.log("제출 완료:", this.state);
+    this.props.history.push("/");
+
+
   };
 
   render() {
