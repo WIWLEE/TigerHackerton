@@ -3,6 +3,10 @@ const app = express();
 const port = 3001; // react의 기본값은 3000이니까 3000이 아닌 아무 수
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
 
 //--여기부터 mySQL ----
 const mysql = require("mysql2"); // mysql 모듈 사용
@@ -25,7 +29,44 @@ app.use(cors());
 
 app.get('/', (req, res) =>{
     res.send('혁이는 코딩 중!')
-})
+});
+
+app.post('/save-image', async (req,res) => {
+    console.log("데이터 검색 중");
+    const {imageUrl, imageName} = req.body;
+    const filePath = path.join(__dirname,'..', 'img');
+
+    if (!fs.existsSync(filePath)) {
+        fs.mkdirSync(filePath);
+    }
+
+    const imagePath = path.join(filePath, `${imageName}.jpg`);
+
+    try {
+        const response = await axios({
+            url: imageUrl,
+            method: 'GET',
+            responseType: 'stream',
+        });
+
+        // 이미지 파일 저장
+        const writer = fs.createWriteStream(imagePath);
+        response.data.pipe(writer);
+
+        writer.on('finish', () => {
+            res.json({ success: true, message: 'Image saved successfully.' });
+        });
+
+        writer.on('error', (error) => {
+            console.error('Failed to save image:', error);
+            res.status(500).json({ success: false, message: 'Failed to save image.' });
+        });
+    } catch (error) {
+        console.error('Failed to download image:', error);
+        res.status(500).json({ success: false, message: 'Failed to download image.' });
+    }
+
+});
 
 app.post("/idplz", (req,res)=>{
     const test = req.body.test;
@@ -57,6 +98,17 @@ app.post("/info",(req,res)=>{
     });
 })
 
+app.get('/foodlist', async (req, res) => {
+    const sql = 'SELECT name, food_description, handling_description, entry_date, disposal_date, stock_quantity, storage_location FROM material';
+
+    connection.query(sql, (err,results) => {
+        if(err){
+            console.err("err",err);
+        }
+        res.json(results);
+    }); 
+
+});
 
 app.get("/todolists", (req, res) => {
     const sql = "SELECT * FROM ToDoList"; // 모든 Material 데이터를 선택하는 쿼리
