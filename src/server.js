@@ -14,8 +14,8 @@ const mysql = require("mysql2"); // mysql 모듈 사용
 var connection = mysql.createConnection({
     host : "127.0.0.1",
     user : 'root', //mysql의 id
-    password : "dbwls6bnqhv", //mysql의 password
-    database : "foodsafety", //사용할 데이터베이스
+    password : "Lddqjsl0818!", //mysql의 password
+    database : "FoodSafety", //사용할 데이터베이스
     port : 3306
 });
 
