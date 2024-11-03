@@ -64,7 +64,7 @@ const Todolist = () => {
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <div id="grid-container">
         <div id="img">
-          <img src="todo.jpeg" alt="Food Hygiene Background" />
+          <img class="img2" src="todo.jpeg" alt="Food Hygiene Background" />
         </div>
         <div id="content1">
           <h2>To Do List</h2>

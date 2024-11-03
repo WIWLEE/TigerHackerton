@@ -33,19 +33,13 @@
     text-shadow: 1px 1px 1px rgb(72, 62, 62);
   }
   
-  img {
-    width: 100%; /* 이미지가 컨테이너의 너비를 가득 채움 */
-    height: 100%px; /* 비율을 유지하며 높이를 자동 조정 */
-    border-radius:  0px; /* 이미지에 둥근 모서리 */
-  }
-  
   #grid-container {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 40% 60%;
     grid-template-areas: "img content1" 
                          "img content2";
-    height: auto;
+    height: 800px;
     padding : 0;
     overflow: hidden;
   }
@@ -74,4 +68,11 @@
     font-size : 20px;
     margin : 20px 20px;
     list-style-type: none; 
+  }
+
+  .img2 {
+    width: 1000px; 
+    height: 1000px; 
+    border-radius:  0px; 
+    /* object-fit: cover; */
   }

@@ -75,14 +75,18 @@ const Home = () => {
         <div id="header">
         </div>
         <div id="grid-container">
-            <div class = "div2">
-                <h2>Food Hygiene<br /> Management Service</h2>
-                <h3>for Store Managers</h3>
-                <Link to="ViewFoodList" class="button">REGISTRATION INQUIRY</Link><br />
-                <Link to="RegisterQR" class="button">PRODUCT REGISTRATION</Link><br />
+            <div>
+                <br /><br /> <br /><br /><br /><br />
+                <h2>Food Hygiene<br /> Management Service</h2><br />
+                <h3>for Store Managers</h3><br /><br /> <br /><br />
+                <container id="test">
+                  <Link to="ViewFoodList" class="button">REGISTRATION INQUIRY</Link><br />
+                  <Link to="RegisterQR" class="button">PRODUCT REGISTRATION</Link><br />
+                </container>
+                
             </div>
             <div>
-                <img src="main.jpeg" alt="Food Hygiene Background"/>
+                <img class="img1" src="main.jpeg" alt="Food Hygiene Background"/>
             </div>
         </div>
         <div id = 'scrollTarget'>
