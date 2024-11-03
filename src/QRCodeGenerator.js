@@ -13,10 +13,6 @@ class QRCodeGenerator extends Component{
             disposalDate: '',
             stockQuantity: '',
             qrValue: '',
-            version: 1,
-            foodDescription: '',
-            handlingDescription: '',
-            storageLocation: '',
         };
     }
 
@@ -41,33 +37,6 @@ class QRCodeGenerator extends Component{
         }));
     };
 
-    handleAddIngredientver1 =() =>
-      {
-          const { name, deliveryCompanyID, entryDate, disposalDate, stockQuantity, foodDescription, handlingDescription, storageLocation } = this.state;
-          const newIngredient = {
-              name,
-              delivery_company_ID: deliveryCompanyID,
-              entry_date: entryDate,
-              disposal_date: disposalDate,
-              stock_quantity: stockQuantity,
-              handling_description: handlingDescription,
-              food_description: foodDescription,
-              storage_location: storageLocation,
-          };
-  
-          this.setState(prevState => ({
-              ingredients: [...prevState.ingredients, newIngredient],
-              name: '',
-              deliveryCompanyID: '',
-              entryDate: '',
-              disposalDate: '',
-              stockQuantity: '',
-              foodDescription: '',
-              handlingDescription: '',
-              storageLocation: '',
-          }));
-      };
-
 
     handleGenerateQRCode = () => {
         const { ingredients } = this.state;
@@ -75,7 +44,7 @@ class QRCodeGenerator extends Component{
     };
 
     render(){
-        const { ingredients, qrValue,version } = this.state;
+        const { ingredients, qrValue } = this.state;
         return(
             <div style={{ textAlign: 'center', margin: '20px' }}>
         <h2>Multi Ingredient QR Code Generator</h2>
@@ -87,7 +56,6 @@ class QRCodeGenerator extends Component{
           placeholder="Ingredient Name"
           style={{ padding: '10px', margin: '5px', width: '300px' }}
         />
-        
         <input
           type="text"
           value={this.state.deliveryCompanyID}
@@ -114,32 +82,6 @@ class QRCodeGenerator extends Component{
           placeholder="Stock Quantity"
           style={{ padding: '10px', margin: '5px', width: '300px' }}
         />
-
-        {this.state.version === 1 &&(
-          <>
-          <input
-              type="text"
-              value={this.state.foodDescriptions}
-              onChange={(e) => this.setState({ foodDescription: e.target.value })}
-              placeholder="Food Descriptions"
-              style={{ padding: '10px', margin: '5px', width: '300px' }}
-          />
-          <input
-              type="text"
-              value={this.state.handlingDescriptions}
-              onChange={(e) => this.setState({ handlingDescription: e.target.value })}
-              placeholder="Handling Descriptions"
-              style={{ padding: '10px', margin: '5px', width: '300px' }}
-          />
-          <input
-              type="text"
-              value={this.state.storageLocations}
-              onChange={(e) => this.setState({ storageLocation: e.target.value })}
-              placeholder="Storage Locations"
-              style={{ padding: '10px', margin: '5px', width: '300px' }}
-          />
-          </>
-        )}
         
         <button onClick={this.handleAddIngredient} style={{ padding: '10px', margin: '10px' }}>
           Add Ingredient
