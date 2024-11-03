@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
-import RegisterQR from './RegisterQR.js';
+import CameraPage from './CameraPage.js';
 import ViewFoodList from './ViewFoodList.js';
 import './Home.css';
 import Todolist from './Todolist.js';
@@ -81,7 +81,7 @@ const Home = () => {
                 <h3>for Store Managers</h3><br /><br /> <br /><br />
                 <container id="test">
                   <Link to="ViewFoodList" class="button">REGISTRATION INQUIRY</Link><br />
-                  <Link to="RegisterQR" class="button">PRODUCT REGISTRATION</Link><br />
+                  <Link to="Camera" class="button">PRODUCT REGISTRATION</Link><br />
                 </container>
             </div>
             <div>
