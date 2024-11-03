@@ -7,29 +7,6 @@ const Todolist = () => {
   const [list, setLists] = useState([]); //list 상태 변수 정의
   const [loading, setLoading] = useState(true); 
 
-  const postTodolist = () => {
-    const post = {
-      is_checked: 0,
-      description: "test",
-      due_date: "2024-08-18",
-    };
-
-    fetch("http://localhost:3001/register/todolist", {
-      method: "post",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(post),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log("Post response:", json);
-      })
-      .catch((error) => {
-        console.error("Post error:", error);
-      });
-  };
-
   const getTodolists = () => {
     fetch("http://localhost:3001/todolists", {
       method: "get",
@@ -48,6 +25,39 @@ const Todolist = () => {
       })
       .catch((error) => {
         console.error("데이터 조회 오류:", error);
+      });
+  };
+
+  const toggleCheck = (id, currentCheckStatus) => {
+
+    console.log("Toggle ID:", id);
+
+    if (!id) {
+      console.error("ID가 정의되지 않았습니다:", id);
+      return;
+    }
+
+    const updatedCheckStatus = currentCheckStatus === 1 ? 0 : 1; // 상태 반전
+
+    fetch(`http://localhost:3001/update/todolist/${id}`, {
+      method: "PUT", // 업데이트 요청
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ is_checked: updatedCheckStatus }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log("Update response:", json);
+        // 리스트 업데이트
+        setLists(prevList =>
+          prevList.map(item => 
+            item.ID === id ? { ...item, is_checked: updatedCheckStatus } : item
+          )
+        );
+      })
+      .catch((error) => {
+        console.error("Update error:", error);
       });
   };
 
@@ -85,12 +95,30 @@ const Todolist = () => {
         </div>
         <div id="content2">
         <ul>
-            {list.slice(0, 10).map(item => (
-              <li key={item.id}>
-              {item.description} ~ <span id = "color">{new Date(item.due_date).toLocaleDateString()}</span>
+          {list.slice(0, 10).map(item => (
+            <li key={item.ID}>
+              <button
+                onClick={() => {
+                  console.log("Clicked on check");
+                  toggleCheck(item.ID, item.is_checked);
+                }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: item.is_checked === 1 ? "green" : "gray", // 체크 시 색상 변경
+                  fontSize: "1rem",
+                  fontWeight : "bold"
+                }}
+                aria-label="Toggle Check"
+              >
+                {item.is_checked === 1 ? "✓" : "○"} {/* 상태에 따른 표시 */}
+              </button>
+              {item.description} ~ <span id="color">{new Date(item.due_date).toLocaleDateString()}</span>
             </li>
-            ))}
-        </ul>   
+          ))}
+        </ul>
+
         </div>
       </div>
       <div>

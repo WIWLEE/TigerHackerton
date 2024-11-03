@@ -80,3 +80,9 @@
   #color{
     color: #afbc86;
   }
+
+  #check{
+    color: rgb(211, 74, 74);
+    font-weight: bold;
+    cursor: pointer;
+  }

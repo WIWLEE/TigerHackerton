@@ -68,18 +68,20 @@ app.post('/save-image', async (req,res) => {
 
 });
 
-app.post("/idplz", (req,res)=>{
-    const test = req.body.test;
-    // console.log(req.body);
-    connection.query("INSERT INTO test (test_body) values (?)",[test],
-    function(err,rows,fields){
-        if(err){
-            console.log("실패");
-            // console.log(err);
-        }else{
-            console.log("성공");
-            // console.log(rows);
-        };
+app.put("/update/todolist/:id", (req, res) => {
+    const { id } = req.params;
+    const { is_checked } = req.body;
+
+    const sql = "UPDATE ToDoList SET is_checked = ? WHERE id = ?";
+    connection.query(sql, [is_checked, id], (error, results) => {
+        if (error) {
+            console.log("업데이트 실패");
+            console.log(error);
+            return res.status(500).send("업데이트 실패");
+        } else {
+            console.log("업데이트 성공", results);
+            return res.json({ message: "업데이트 성공" });
+        }
     });
 });
 
