@@ -1,0 +1,223 @@
+*{
+    font-family : 'Times New Roman', Times, serif
+}
+
+.header {
+    width: 100vw;
+    font-family: 'Times New Roman', Times, serif;
+    /* 글꼴 설정 */
+    font-size: 16px;
+    /* 글자 크기 */
+    color: #ffffff;
+    /* 글자 색상 */
+    background-color: #647436;
+    /* 배경 색상 */
+    /* padding: 20px; */
+    border: 0px;
+    /* 테두리 */
+    border-radius: 0px;
+    /* 모서리 둥글게 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* 그림자 효과 */
+    text-align: center;
+    /* 텍스트 왼쪽 정렬 */
+    transition: transform 0.2s;
+    /* 변환 효과 */
+    overflow: hidden;
+    /* 화면 밖으로 확장되는 것을 방지 */
+}
+
+.container {
+    width: 100vw;
+    margin: 0;
+}
+
+.header {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0;
+    padding: 0;
+}
+
+.green-box {
+    font-size : 16pt;
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: start; /* 가로 중앙 정렬 */
+    background-color: #647436ef;
+    height: 50px;
+    position: absolute;
+    top: 2300px;
+    left : 200px;
+    right : 200px;
+    width: 1390px;
+    height: 100px;
+    z-index: 3;
+    padding-left: 50px;
+    /* text-decoration: underline; */
+    
+}
+
+
+.white-box {
+    background-color: white;
+    /* 하얀 배경 */
+    padding: 20px;
+    /* 둥근 모서리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 그림자 효과 */
+    text-align: center;
+    /* 텍스트 중앙 정렬 */
+    position: absolute;
+    /* 자식 요소의 위치 기준 */
+    justify-content: center;
+    justify-items: center;
+    top: 2400px;
+    left : 200px;
+    right : 200px;
+    width: 1400px;
+    height: 400px;
+    align-content: center;
+    z-index : 2;
+    display : grid;
+    grid-template-columns: 50% 50%;
+}
+
+.white-box > div{
+    width: 500px;
+}
+
+p {
+    position: relative;
+    /* 텍스트가 초록색 박스 위에 표시되도록 설정 */
+    z-index : 4;
+    /* z-index로 텍스트를 위에 표시 */
+}
+
+h1 {
+    position: relative;
+    /* 텍스트가 초록색 박스 위에 표시되도록 설정 */
+    z-index: 2;
+    font-size: 55pt;
+    /* z-index로 텍스트를 위에 표시 */
+}
+
+h3{
+    font-size : 18.5pt;
+}
+.img3 {
+    position: absolute;
+    width : 100%;
+    height: 500px;
+    top: 2200px;
+    left : 0px;
+    object-fit: cover;
+}
+
+/* label{
+    display : relative;
+} */
+
+t.tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add some space between tasks if needed */
+}
+
+.task {
+    display: flex;
+    flex-direction: column; /* Stack label above textarea */
+}
+
+textarea {
+    width: 100%; /* Full width */
+    height: 40px; /* Adjust height as needed */
+    background: transparent; /* No background */
+    border: none; /* Remove border */
+    border-bottom: 2px solid #000; /* Underline color and thickness */
+    outline: none; /* Remove the default outline */
+    resize: none; /* Disable resizing */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    font-size: 16pt; /* Font size to match your design */
+    color: #000; /* Text color */
+}
+
+textarea::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Placeholder color */
+}
+
+.month, .day, .date, .date_today{
+    color: black;
+}
+
+.submit {
+    background-color: #647436f0;
+    border-radius: 20px;
+    color : white;
+    border-width : 0px;
+    padding : 10px;
+    font-size : 12.5pt;
+}
+
+.submit:hover{
+    background-color: #64743670;
+}
+
+.close {
+    position: absolute; /* Correct property */
+    height: 200px;
+    top: 2850px; /* Adjust as needed */
+    left: 200px; /* Adjust as needed */
+    z-index: 4; /* Ensure it is above other elements */
+    /* background-color: white; */
+}
+
+.close > p {
+    color: black; /* Change color to black for better visibility */
+    z-index: 5; /* Not needed if .close is already above */
+    width: 1430px;
+}
+
+.date-picker{
+    position: relative;
+    top: 90px;
+    display : flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: start; /* 가로 중앙 정렬 */
+}
+
+#year{
+    border-radius: 20px;
+    color : white;
+    border-width : 0px;
+    padding : 10px;
+    font-size : 12.5pt;
+    background-color: #647436a0;
+    width: 120px;
+    
+}
+
+#month{
+    border-radius: 20px;
+    color : white;
+    border-width : 0px;
+    padding : 10px;
+    font-size : 12.5pt;
+    background-color: #647436a0;
+    margin-right: 10px;
+    width: 120px;
+}
+
+#day{
+    border-radius: 20px;
+    color : white;
+    border-width : 0px;
+    padding : 10px;
+    font-size : 12.5pt;
+    background-color: #647436a0;
+    width: 120px;
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Todolist.css';
+import AddTodolist from './AddTodolist.js';
+
 
 const Todolist = () => {
   const [list, setLists] = useState([]); //list 상태 변수 정의
@@ -52,7 +54,17 @@ const Todolist = () => {
  //화면이 렌더링될때 실행
   useEffect(() => {
     getTodolists();
+    const now = new Date();
+    const options = {
+      year: 'numeric',  // Display the full numeric year (e.g., 2024)
+      month: 'long',    // Display the full month name (e.g., November)
+      day: 'numeric'    // Display the day of the month (e.g., 3)
+  };
+    const timeString = now.toLocaleTimeString('en-US', options);
+    document.getElementById('currentTime').textContent = `${timeString}`
   }, []);
+
+
 
   return (
     <div>
@@ -64,22 +76,25 @@ const Todolist = () => {
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       <div id="grid-container">
         <div id="img">
-          <img src="todo.jpeg" alt="Food Hygiene Background" />
+          <img class="img2" src="todo.jpeg" alt="Food Hygiene Background" />
         </div>
         <div id="content1">
           <h2>To Do List</h2>
-          <h3>11/11/2024 10:38</h3>
+          <h3 id='currentTime'>11/11/2024 10:38</h3>
           <h4>If you are an admin today <br />please read the below carefully and check your status</h4>
         </div>
         <div id="content2">
         <ul>
-            {list.map(item => (
+            {list.slice(0, 10).map(item => (
               <li key={item.id}>
-              {item.description} ~ {new Date(item.due_date).toLocaleDateString()}
+              {item.description} ~ <span id = "color">{new Date(item.due_date).toLocaleDateString()}</span>
             </li>
             ))}
         </ul>   
         </div>
+      </div>
+      <div>
+      <AddTodolist />
       </div>
     </div>
   );
