@@ -119,6 +119,8 @@ class CameraPage extends Component{
         }
 
         console.log("제출 완료:", this.state);
+
+      
     };
 
     render()
@@ -126,6 +128,9 @@ class CameraPage extends Component{
         const {result} = this.state;
         return(<div style={{ fontFamily: "'Ropa Sans', sans-serif", color: "#333", maxWidth: "640px", margin: "0 auto", position: "relative" }}>
             <div>QR 코드 이미지 제출</div>
+            <div>
+            
+            </div>
             <input type="file" onChange={this.handleFileChange} accept="image/*"/>
             {result && (
                 <div className="result-grid">
