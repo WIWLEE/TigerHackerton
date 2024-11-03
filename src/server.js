@@ -14,7 +14,7 @@ const mysql = require("mysql2"); // mysql 모듈 사용
 var connection = mysql.createConnection({
     host : "127.0.0.1",
     user : 'root', //mysql의 id
-    password : "dbwls6bnqhv", //mysql의 password
+    password : "Lddqjsl0818!", //mysql의 password
     database : "foodsafety", //사용할 데이터베이스
     port : 3306
 });
@@ -111,7 +111,7 @@ app.get('/foodlist', async (req, res) => {
 });
 
 app.get("/todolists", (req, res) => {
-    const sql = "SELECT * FROM ToDoList"; // 모든 Material 데이터를 선택하는 쿼리
+    const sql = "SELECT * FROM ToDoList WHERE due_date > UTC_TIMESTAMP()"; // all list after now
 
     connection.query(sql, (error, results) => {
         if (error) {
@@ -124,6 +124,20 @@ app.get("/todolists", (req, res) => {
         }
     });
 });
+
+app.post("/register/todolist",(req,res)=>{
+    const { is_checked, description, due_date } = req.body;
+    
+    const sql = `INSERT INTO ToDoList (is_checked, description, due_date) VALUES (?, ?, ?)`;
+
+    connection.query(sql, [is_checked, description, due_date], (error, results) => {
+        if (error) {
+            console.error('Error inserting data:', error);
+            return res.status(500).json({ error: 'Database error' });
+        }
+        res.status(201).json({ message: 'ToDoList added successfully'});
+    });
+})
 
 
 app.post("/callbody", (req,res)=>{

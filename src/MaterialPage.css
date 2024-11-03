@@ -1,3 +1,4 @@
+
 .food-item-container {
   width: 50vw; /* 전체 너비의 50% */
   margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 중앙 정렬 */
@@ -66,3 +67,21 @@
     color: #555; /* 연한 색 */
   }
   
+#header{
+    background-color: beige;
+    width : 100%;
+    height: 70px;
+  }
+ 
+  
+ .HomeButton {
+    background-color: beige !important;
+    border : 0px;
+    position: absolute;
+    left : 10px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #354504;
+    top : 23px;
+}
+
