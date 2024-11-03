@@ -86,3 +86,7 @@
     font-weight: bold;
     cursor: pointer;
   }
+
+  button{
+    display: inline;
+  }
