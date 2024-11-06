@@ -1,4 +1,4 @@
-#Food Ingredient Manager
+# Food Ingredient Manager
 
 ## Inspiration
 As we were developing a problem related to food and agriculture, we were reminded of my experience working in a restaurant. The restaurant had a lot of guidelines for handling food safely, but it was difficult to communicate them to all employees, which led to problems at McDonald's and other corporate and personal restaurants.
